@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JSoupPuller.iml" filepath="$PROJECT_DIR$/.idea/modules/JSoupPuller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JSoupPuller_main.iml" filepath="$PROJECT_DIR$/.idea/modules/JSoupPuller_main.iml" group="JSoupPuller" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JSoupPuller_test.iml" filepath="$PROJECT_DIR$/.idea/modules/JSoupPuller_test.iml" group="JSoupPuller" />
+    </modules>
+  </component>
+</project>
