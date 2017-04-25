@@ -32,7 +32,7 @@ public class ListLinks{
 
                 Document docMovie = Jsoup.connect(movieUrl).get();
 
-                Elements information = docMovie.select("dl");
+                Elements information = docMovie.select("dd");
 
                 Elements countries = docMovie.select("span.flag-icon.flag-icon-us");
 
@@ -42,8 +42,14 @@ public class ListLinks{
                 //prints out information, image location, and description if the title is on Netflix, USA
                 if (countries.hasAttr("title")) {
 
-                    writer.println(information.text() + " PICTURE " + moviePictures.get(i).attr("abs:src") + " DESCRIPTION " + description.text());
+                    for(Element info : information){
+                    writer.print(" DATA " + info.text());
+                    }
+                    writer.println( " DATA " + moviePictures.get(i).attr("abs:src") + " DATA " + description.text());
                 }
+
+//                    writer.println(information.text() + " DATA " + moviePictures.get(i).attr("abs:src") + " DATA " + description.text() +"EOF" );
+//                }
 
 //            //irrelevant text matching method to see if title was on Netflix
 //            Elements onNetflix = docMovie.select(":matchesOwn(Yes!)");
