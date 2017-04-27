@@ -1,6 +1,6 @@
+package models.readin;
+
 import org.jsoup.Jsoup;
-import org.jsoup.examples.HtmlToPlainText;
-import org.jsoup.helper.Validate;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -41,11 +41,11 @@ public class ListLinks{
 
                 //prints out information, image location, and description if the title is on Netflix, USA
                 if (countries.hasAttr("title")) {
-
+                    writer.print("FILM");
                     for(Element info : information){
-                    writer.print(" DATA " + info.text());
+                    writer.print( info.text() + "||");
                     }
-                    writer.println( " DATA " + moviePictures.get(i).attr("abs:src") + " DATA " + description.text());
+                    writer.print( moviePictures.get(i).attr("abs:src") + "||" + description.text());
                 }
 
 //                    writer.println(information.text() + " DATA " + moviePictures.get(i).attr("abs:src") + " DATA " + description.text() +"EOF" );
