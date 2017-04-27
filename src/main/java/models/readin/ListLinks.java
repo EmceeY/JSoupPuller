@@ -25,7 +25,7 @@ public class ListLinks{
 
         try {
             //loop over Array List of Elements
-            PrintWriter writer = new PrintWriter("text-netflix-output.txt", "UTF-8");
+            PrintWriter writer = new PrintWriter("text-netflix-output-2.txt", "UTF-8");
             for (int i = 0; i < movies.size(); i++) {
 
                 String movieUrl = movieLinks.get(i).attr("abs:href");
