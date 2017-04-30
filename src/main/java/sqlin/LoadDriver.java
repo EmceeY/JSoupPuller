@@ -1,6 +1,8 @@
 package sqlin;
 
+import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Created by User on 4/29/17.
@@ -9,7 +11,7 @@ import java.sql.*;
  */
 public class LoadDriver {
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
 
     {
         Connection conn = null;
@@ -20,20 +22,40 @@ public class LoadDriver {
 //        String username = "root";
 //        String password = "YES";
 
+        FileToDatabase fileToDatabase = new FileToDatabase();
+
+        ArrayList films = fileToDatabase.fileToDatabse("text-netflix-output-full-part2.txt");
+
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/nothings-on?" +
                     "user=nothings-on&password=nothing");
 
             stmt = conn.createStatement();
 
-            rs = stmt.executeQuery("SELECT * FROM film");
+            String updateQuery8 = "INSERT INTO film (title, year, type, genre, imdb_rating, netflix_rating, " +
+                    "poster, description) VALUES ";
 
-            while (rs.next()){
-                String name = rs.getString("title");
-                System.out.println(name);
+            String updateQuery10 = "INSERT INTO film (title, year, type, genre, actors, imdb_rating, netflix_rating, " +
+                    "length, poster, description) VALUES ";
+
+            for(int i = 0; i < films.size(); i++ ) {
+                //System.out.println(updateQuery + films.get(i).toString());
+
+                String currentFilm = films.get(i).toString();
+
+                int filmCount = currentFilm.split("\"").length;
+
+                String sql;
+                if (filmCount == 17) {
+                    sql = updateQuery8 + currentFilm;
+                    stmt.executeUpdate(sql);
+                }
+
+                else {
+                    System.out.println(currentFilm);
+                }
 
             }
-
 
             System.out.println(rs.getString("title"));
 
